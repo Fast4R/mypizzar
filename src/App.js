@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Shop from './components/Shop';
+import Sidebar from './components/Sidebar';
+import styled from 'styled-components';
 
 function App() {
-  return (
+
+  return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Mainside>
+          <Shop />
+        </Mainside>
+        <Orderside>
+          <Sidebar />
+        </Orderside>
+      </Container>
     </div>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  display:flex;
+  width: 100%;
+  height: 100vh;
+`;
+
+const Mainside = styled.div`
+  width: 80%;
+`;
+
+const Orderside = styled.div`
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  width: 20%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+`;
