@@ -1,19 +1,31 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import Shop from './components/Shop';
 import Sidebar from './components/Sidebar';
 import styled from 'styled-components';
 
 function App() {
 
+  const [product, setProduct] = useState([]);
+
+  const handlerChangeProduct = (name, price) =>{
+    setProduct(() =>{
+      product.push({
+        name: name,
+        price: price
+      })
+      return product;
+    })
+  }
+
   return(
     <div className="App">
       <Container>
         <Mainside>
-          <Shop />
+          <Shop product={product} onChangeProduct={handlerChangeProduct}/>
         </Mainside>
         <Orderside>
-          <Sidebar />
+          <Sidebar product={product}/>
         </Orderside>
       </Container>
     </div>

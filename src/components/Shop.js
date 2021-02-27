@@ -3,7 +3,7 @@ import Products from './Products';
 import styled from 'styled-components';
 import db from '../firebase';
 
-function Shop() {
+function Shop(props) {
     const [products, setProducts] = useState([]);
 
     const getProductsData = () => {
@@ -35,7 +35,7 @@ function Shop() {
                 </List>
             </Navigation>
             <ProductsList>
-                <Products products={products}/>
+                <Products products={products} state={props} onChangeProduct={props.onChangeProduct}/>
             </ProductsList>
         </Mainside>
     )

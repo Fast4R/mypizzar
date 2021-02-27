@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Products(props) {
+
     return (
         <ProductsList>
             {
@@ -12,7 +13,9 @@ function Products(props) {
                             <ProductName>{item.name}</ProductName>
                             <ProductDescription>{item.description}</ProductDescription>
                             <ProductPrice>{item.price} Бел.руб.</ProductPrice>
-                            <ProductOrderButton>В корзину</ProductOrderButton>
+                            <ProductOrderButton id={item.id} onClick={() => {props.onChangeProduct(item.name, item.price)}}>
+                                В корзину
+                            </ProductOrderButton>
                         </Container>    
                     </ProductItem>
                 ))
@@ -88,6 +91,8 @@ const ProductOrderButton = styled.button`
     outline: none;
 
     text-transform: uppercase;
+
+    transition: background-color .2s linear;
 
     &:hover{
         background-color: #088705;
