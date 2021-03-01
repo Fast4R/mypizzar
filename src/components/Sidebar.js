@@ -2,7 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Sidebar(props) {
-    
+
+    const handleChangePrice = () => {
+        let totalPrice = 0;
+
+        for(let i = 1; i < props.product.length; i++){
+            totalPrice += props.product[i].price
+        }
+        return totalPrice.toFixed(2);
+    }
+
     return (
         <Order>
             <Logo>PizzAR</Logo>
@@ -17,7 +26,7 @@ function Sidebar(props) {
                 }
             </OrderList>
             <Promocode placeholder="Введите промокод"></Promocode>
-            <OrderAmount>45.4 Бел.руб.</OrderAmount>
+            <OrderAmount>{handleChangePrice()} Бел.руб.</OrderAmount>
             <ConfirmButton>Заказать</ConfirmButton>
         </Order>
     )

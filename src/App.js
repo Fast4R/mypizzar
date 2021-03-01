@@ -6,15 +6,13 @@ import styled from 'styled-components';
 
 function App() {
 
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState([{name: "Товар", price: "Цена"}]);
 
   const handlerChangeProduct = (name, price) =>{
-    setProduct(() =>{
-      product.push({
-        name: name,
-        price: price
-      })
-      return product;
+    setProduct(() => {
+      product.push({name: name, price: price})
+      let removed = product.splice(0);
+      return removed
     })
   }
 
@@ -22,7 +20,7 @@ function App() {
     <div className="App">
       <Container>
         <Mainside>
-          <Shop product={product} onChangeProduct={handlerChangeProduct}/>
+          <Shop onChangeProduct={handlerChangeProduct}/>
         </Mainside>
         <Orderside>
           <Sidebar product={product}/>
