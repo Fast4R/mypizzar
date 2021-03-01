@@ -33,23 +33,19 @@ const Container = styled.div`
 const ProductsList = styled.div`
     display: flex;
     justify-content: space-around;
-    padding: 0 15px;
+    padding: 0 100px;
     margin: 30px 0 90px;
     flex-wrap: wrap;
 `;
 
 const ProductItem = styled.div`
     width: 350px;
-    margin: 25px 0;
+    margin: 25px;
 
     overflow: hidden;
 
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, .3);
-
-    &:first-child{
-        margin-left: 0;
-    }
 `;
 
 const ProductImage =styled.img`

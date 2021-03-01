@@ -28,6 +28,9 @@ function Sidebar(props) {
             <Promocode placeholder="Введите промокод"></Promocode>
             <OrderAmount>{handleChangePrice()} Бел.руб.</OrderAmount>
             <ConfirmButton>Заказать</ConfirmButton>
+            <OrderBg src="https://www.flaticon.com/svg/vstatic/svg/3144/3144460.svg?token=exp=1614628824~hmac=5b2750456ee72578b9d93be27aaba78e"
+            width="300" height="300"
+            ></OrderBg>
         </Order>
     )
 }
@@ -43,22 +46,28 @@ const Order = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 130px;
+
+    position: relative;
+`;
+
+const OrderBg = styled.img`
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    opacity: .1;
 `;
 
 const Header = styled.h2`
     padding: 7px 30px;
     margin-bottom: 30px;
-    
-    
+    z-index: 2;
 `;
 
-// border-radius: 10px;
-//     border: 2px solid transparent;
-//     border-image: linear-gradient(45deg, #e83a3a, #e81313);
-//     border-image-slice 1;
-
 const OrderList = styled.div`
-
+    padding: 0 5px;
+    max-height: 150px;
+    overflow-y: scroll;
+    z-index: 2;
 `;
 
 const Promocode = styled.input`
@@ -68,6 +77,7 @@ const Promocode = styled.input`
     border: 2px solid rgba(229, 67, 67, .5);
     border-radius: 20px;
     outline: none;
+    z-index: 2;
 
     transition: border .4s linear;
 
@@ -82,6 +92,7 @@ const OrderAmount = styled.div`
     font-weight: 700;
     
     color: #401e06;
+    z-index: 2;
 `;
 
 const ConfirmButton = styled.button`
@@ -98,6 +109,7 @@ const ConfirmButton = styled.button`
     outline: none;
 
     text-transform: uppercase;
+    z-index: 2;
 
     transition: background-color .2s linear;
 
