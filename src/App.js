@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 function App() {
 
-  const [product, setProduct] = useState([{name: "Товар", price: "Цена"}]);
+  const [product, setProduct] = useState([]);
 
   const handlerChangeProduct = (name, price) =>{
     setProduct(() => {

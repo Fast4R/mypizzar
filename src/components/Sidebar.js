@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 function Sidebar(props) {
 
+    const [orderProduct, setOrderProduct] = useState(props.product);
+
+    useEffect(() => {
+        setOrderProduct(props);
+    }, [props.product])
+
     const handleChangePrice = () => {
         let totalPrice = 0;
 
-        for(let i = 1; i < props.product.length; i++){
+        for(let i = 0; i < props.product.length; i++){
             totalPrice += props.product[i].price
         }
         return totalPrice.toFixed(2);
+    }
+
+    const handleRemoveOrderProduct = (item) => {
+        const index = orderProduct.product.indexOf(item);
+        setOrderProduct(() => {
+            let thing = orderProduct.product;
+            thing.splice(index, 1);
+            return thing;
+        })
     }
 
     return (
@@ -21,14 +36,17 @@ function Sidebar(props) {
             <OrderList>
                 {
                     props.product.map(item => (
-                        <Orderstat>{item.name}: {item.price}</Orderstat>
+                        <Orderstat>{item.name}: {item.price}
+                        <OrderstatReomove onClick={() => handleRemoveOrderProduct(item)} src="https://www.flaticon.com/svg/vstatic/svg/1828/1828665.svg?token=exp=1614789818~hmac=04c0183a8ac2ad2e7fd855a69ee77431"
+                        width="15" height="15"></OrderstatReomove>
+                        </Orderstat>
                     ))
                 }
             </OrderList>
             <Promocode placeholder="Введите промокод"></Promocode>
             <OrderAmount>{handleChangePrice()} Бел.руб.</OrderAmount>
             <ConfirmButton>Заказать</ConfirmButton>
-            <OrderBg src="https://www.flaticon.com/svg/vstatic/svg/3144/3144460.svg?token=exp=1614628824~hmac=5b2750456ee72578b9d93be27aaba78e"
+            <OrderBg src="https://www.flaticon.com/svg/vstatic/svg/2636/2636890.svg?token=exp=1614789587~hmac=25bc8fca397c7976f34cd0111c98384a"
             width="300" height="300"
             ></OrderBg>
         </Order>
@@ -36,10 +54,6 @@ function Sidebar(props) {
 }
 
 export default Sidebar;
-
-const Logo = styled.h1`
-    margin-bottom: 150px;
-`;
 
 const Order = styled.div`
     display: flex;
@@ -50,11 +64,8 @@ const Order = styled.div`
     position: relative;
 `;
 
-const OrderBg = styled.img`
-    position: absolute;
-    top: 50%;
-    z-index: 1;
-    opacity: .1;
+const Logo = styled.h1`
+    margin-bottom: 150px;
 `;
 
 const Header = styled.h2`
@@ -68,6 +79,21 @@ const OrderList = styled.div`
     max-height: 150px;
     overflow-y: scroll;
     z-index: 2;
+`;
+
+const Orderstat = styled.div`
+    width: 200px;
+    margin-bottom: 5px;
+`;
+
+const OrderstatReomove = styled.img`
+    float: right;
+    opacity: .7;
+    cursor: pointer;
+
+    &: hover{
+        opacity: 1;
+    }
 `;
 
 const Promocode = styled.input`
@@ -118,4 +144,9 @@ const ConfirmButton = styled.button`
     }
 `;
 
-const Orderstat = styled.div``;
+const OrderBg = styled.img`
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    opacity: .1;
+`;
