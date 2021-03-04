@@ -7,7 +7,7 @@ function Sidebar(props) {
 
     useEffect(() => {
         setOrderProduct(props);
-    }, [props.product])
+    })
 
     const handleChangePrice = () => {
         let totalPrice = 0;
@@ -21,9 +21,8 @@ function Sidebar(props) {
     const handleRemoveOrderProduct = (item) => {
         const index = orderProduct.product.indexOf(item);
         setOrderProduct(() => {
-            let thing = orderProduct.product;
-            thing.splice(index, 1);
-            return thing;
+            orderProduct.product.splice(index, 1);
+            return orderProduct.product;
         })
     }
 
