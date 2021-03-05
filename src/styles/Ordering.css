@@ -1,0 +1,29 @@
+.formEnterPlace{
+    padding: 10px;
+    margin-bottom: 20px;
+
+    border: 1px solid #e84343;
+    outline: none;
+
+    transition: border .2s linear,
+    border-radius .4s linear;
+}
+
+.formEnterPlace:focus{
+    border: 1px solid #079905;
+    border-radius: 10px;
+}
+
+.paymentType{
+    font-size: 18px;
+    color: #421502;
+}
+
+.payment{
+    margin-top: 2.5px;
+}
+
+.closeForm{
+    transition-duration: .4s;
+    opacity: 0;
+}

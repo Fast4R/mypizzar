@@ -26,6 +26,14 @@ function Sidebar(props) {
         })
     }
 
+    function checkOrders() {
+        if(orderProduct.product.length === 0){
+            return alert('Вы не выбрали товар!')
+        }else {
+            return props.handleOrdering();
+        }
+    }
+
     return (
         <Order>
             <Logo>PizzAR</Logo>
@@ -44,7 +52,7 @@ function Sidebar(props) {
             </OrderList>
             <Promocode placeholder="Введите промокод"></Promocode>
             <OrderAmount>{handleChangePrice()} Бел.руб.</OrderAmount>
-            <ConfirmButton>Заказать</ConfirmButton>
+            <ConfirmButton onClick={checkOrders}>Заказать</ConfirmButton>
             <OrderBg src="https://www.flaticon.com/svg/vstatic/svg/2636/2636890.svg?token=exp=1614789587~hmac=25bc8fca397c7976f34cd0111c98384a"
             width="300" height="300"
             ></OrderBg>

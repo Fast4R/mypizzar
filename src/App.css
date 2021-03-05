@@ -1,3 +1,11 @@
 *{
     margin: 0;
 }
+
+.open{
+    display: flex;
+}
+
+.close{
+    display: none;
+}

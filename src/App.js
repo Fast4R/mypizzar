@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import Shop from './components/Shop';
 import Sidebar from './components/Sidebar';
+import Ordering from './components/Ordering';
 import styled from 'styled-components';
 
 function App() {
@@ -16,21 +17,34 @@ function App() {
     })
   }
 
+  function handleOrdering() {
+    const cont = document.getElementById('container');
+    const ordMen = document.getElementById('ordermenu');
+
+    cont.style.display = 'none';
+    ordMen.style.display = 'flex';
+  }
+
   return(
-    <div className="App">
-      <Container>
+    <PizzarWindow>
+      <Container id="container">
         <Mainside>
           <Shop onChangeProduct={handlerChangeProduct}/>
         </Mainside>
         <Orderside>
-          <Sidebar product={product}/>
+          <Sidebar product={product} handleOrdering={handleOrdering}/>
         </Orderside>
       </Container>
-    </div>
+      <OrderMenu id="ordermenu">
+        <Ordering />
+      </OrderMenu>
+    </PizzarWindow>
   );
 }
 
 export default App;
+
+const PizzarWindow = styled.div``;
 
 const Container = styled.div`
   display:flex;
@@ -48,4 +62,8 @@ const Orderside = styled.div`
   right: 0;
   width: 20%;
   box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+`;
+
+const OrderMenu = styled.div`
+  display: none;
 `;
