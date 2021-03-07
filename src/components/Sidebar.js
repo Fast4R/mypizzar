@@ -4,20 +4,29 @@ import styled from 'styled-components';
 function Sidebar(props) {
 
     const [orderProduct, setOrderProduct] = useState(props.product);
+    const [finalPrice, setFinalPrice] = useState(0);
+    const [isPromocode, setPromocode] = useState(false);
 
     useEffect(() => {
         setOrderProduct(props);
+        handleChangePrice();
     })
 
     const promocode = document.getElementById('promocode');
     const handleChangePrice = () => {
         let totalPrice = 0;
 
-        for(let i = 0; i < props.product.length; i++){
-            totalPrice += props.product[i].price;
-        }
+        setFinalPrice(() => {
+            for(let i = 0; i < props.product.length; i++){
+                totalPrice += props.product[i].price;
+            }
 
-        return totalPrice.toFixed(2);
+            if(isPromocode){
+                totalPrice -= totalPrice*0.1;
+            }
+    
+            return totalPrice.toFixed(2);
+        })
     }
 
     const handleRemoveOrderProduct = (item) => {
@@ -39,8 +48,10 @@ function Sidebar(props) {
     function checkPromocode(){
         if(promocode.value == "pizzar"){
             promocode.style.border = '2px solid #079905';
+            setPromocode(true);
         }else {
             promocode.style.border = '2px solid rgb(229, 67, 67)';
+            setPromocode(false);
         }
     }
 
@@ -61,7 +72,7 @@ function Sidebar(props) {
                 }
             </OrderList>
             <Promocode id="promocode" placeholder="Введите промокод" onChange={checkPromocode}></Promocode>
-            <OrderAmount>{handleChangePrice()} Бел.руб.</OrderAmount>
+            <OrderAmount>{finalPrice} Бел.руб.</OrderAmount>
             <ConfirmButton onClick={checkOrders}>Заказать</ConfirmButton>
             <OrderBg src="https://www.flaticon.com/svg/vstatic/svg/2636/2636890.svg?token=exp=1614789587~hmac=25bc8fca397c7976f34cd0111c98384a"
             width="300" height="300"

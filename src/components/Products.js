@@ -14,6 +14,7 @@ function Products(props) {
                             <Container>
                                 <ProductName>{item.name}</ProductName>
                                 <ProductDescription>{item.description}</ProductDescription>
+                                <PizzaSize>25см</PizzaSize>
                                 <ProductPrice>{item.price} Бел.руб.</ProductPrice>
                                 <ProductOrderButton id={item.id} onClick={() => {props.onChangeProduct(item.name, item.price)}}>
                                     В корзину
@@ -112,6 +113,10 @@ const ProductItem = styled.div`
     width: 300px;
     margin: 25px 10px;
 
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+
     overflow: hidden;
 
     border-radius: 10px;
@@ -138,11 +143,22 @@ const ProductName = styled.h2`
     color: #0bbf08;
 `;
 
-const ProductDescription =styled.p`
+const ProductDescription = styled.p`
     height: 100px;
     margin-bottom: 35px;
     color: grey;
-`; 
+`;
+
+const PizzaSize = styled.button`
+    padding: 10px 7px;
+    margin-bottom: 30px;
+
+    border: none;
+    border-radius: 3px;
+    outline: none;
+
+    background-color: rgba(#cccaca, .3);
+`;
 
 const ProductPrice = styled.h3`
     margin-bottom: 55px;
