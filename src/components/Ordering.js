@@ -1,18 +1,21 @@
 import React from 'react';
 import '../styles/Ordering.css';
 import styled from 'styled-components';
+import db from '../firebase';
 
-function Ordering() {
+function Ordering(props) {
+
+    const name = document.getElementById('name');
+    const phone = document.getElementById('phone');
+    const address = document.getElementById('address');
+    const orderForm = document.getElementById('orderForm');
+    const returnModal = document.getElementById('returnModal');
 
     function handleOrderData(e) {
         e.preventDefault();
-        const name = document.getElementById('name');
-        const phone = document.getElementById('phone');
-        const address = document.getElementById('address');
-        const orderForm = document.getElementById('orderForm');
-        const returnModal = document.getElementById('returnModal');
 
         if(name.value && phone.value && address.value){
+            sendOrderData();
             orderForm.classList.add('closeForm');
             setTimeout(() => {
                 returnModal.style.display = 'flex';
@@ -20,6 +23,15 @@ function Ordering() {
         }else{
             return alert('Заполните все поля!');
         }
+    }
+
+    const sendOrderData = () => {
+        return db.collection("orders").doc().set({
+            client: name.value,
+            address: address.value,
+            products: props.product,
+            phone: phone.value,
+        });
     }
 
     return (

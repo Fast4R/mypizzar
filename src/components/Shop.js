@@ -5,6 +5,9 @@ import db from '../firebase';
 
 function Shop(props) {
     const [products, setProducts] = useState([]);
+    const [snacks, setSnacks] = useState([]);
+    const [drinks, setDrinks] = useState([]);
+    const [desserts, setDesserts] = useState([]);
 
     const getProductsData = () => {
         db.collection('products').onSnapshot((snapshot) => {
@@ -14,8 +17,35 @@ function Shop(props) {
         })
     }
 
+    const getSnacksData = () => {
+        db.collection('snacks').onSnapshot((snapshot) => {
+        setSnacks(snapshot.docs.map((doc) => {
+            return doc.data()
+            }))
+        })
+    }
+
+    const getDrinksData = () => {
+        db.collection('drinks').onSnapshot((snapshot) => {
+        setDrinks(snapshot.docs.map((doc) => {
+            return doc.data()
+            }))
+        })
+    }
+
+    const getDessertsData = () => {
+        db.collection('desserts').onSnapshot((snapshot) => {
+        setDesserts(snapshot.docs.map((doc) => {
+            return doc.data()
+            }))
+        })
+    }
+
     useEffect(() => {
         getProductsData();
+        getSnacksData();
+        getDrinksData();
+        getDessertsData();
     }, []);
 
     return (
@@ -31,11 +61,11 @@ function Shop(props) {
                     Напитки
                 </List>
                 <List>
-                    Салаты
+                    Десерты
                 </List>
             </Navigation>
             <ProductsList>
-                <Products products={products} state={props} onChangeProduct={props.onChangeProduct}/>
+                <Products products={products} snacks={snacks} drinks={drinks} desserts={desserts} state={props} onChangeProduct={props.onChangeProduct}/>
             </ProductsList>
         </Mainside>
     )

@@ -36,7 +36,7 @@ function App() {
         </Orderside>
       </Container>
       <OrderMenu id="ordermenu">
-        <Ordering />
+        <Ordering product={product}/>
       </OrderMenu>
     </PizzarWindow>
   );
