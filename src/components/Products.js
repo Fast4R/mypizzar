@@ -79,11 +79,6 @@ function Products(props) {
                     ))
                 }
             </ProductsAll>
-
-            <Footer>
-                <FooterGithubLink>My GitHub: <a href="https://github.com/Fast4R" target="_blank">Fast4R</a></FooterGithubLink>
-                <FooterDescription>Разработчик Булат Андрей. (с) 2021. Все права (не)защищены :).</FooterDescription>
-            </Footer>
         </ProductsList>
     )
 }
@@ -187,23 +182,3 @@ const ProductOrderButton = styled.button`
     }
 `;
 
-const Footer = styled.div`
-    width: 1117px;
-    padding: 50px;
-
-    text-align: center;
-    color: white;
-    background-color: rgba(36, 25, 41, .85);
-
-    position: absolute;
-    left: 0;
-    
-`;
-
-const FooterGithubLink = styled.div`
-    a{
-        color: white;
-    }
-`;
-
-const FooterDescription = styled.div``;

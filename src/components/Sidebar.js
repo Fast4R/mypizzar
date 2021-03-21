@@ -74,7 +74,7 @@ function Sidebar(props) {
             <Promocode id="promocode" placeholder="Введите промокод" onChange={checkPromocode}></Promocode>
             <OrderAmount>{finalPrice} Бел.руб.</OrderAmount>
             <ConfirmButton onClick={checkOrders}>Заказать</ConfirmButton>
-            <OrderBg src="https://www.flaticon.com/svg/vstatic/svg/2636/2636890.svg?token=exp=1614789587~hmac=25bc8fca397c7976f34cd0111c98384a"
+            <OrderBg src="https://www.flaticon.com/svg/vstatic/svg/2636/2636890.svg?token=exp=1616335886~hmac=00975c3693d5cc4957ef4402a8c75647"
             width="300" height="300"
             ></OrderBg>
         </Order>

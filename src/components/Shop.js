@@ -67,6 +67,8 @@ function Shop(props) {
             <ProductsList>
                 <Products products={products} snacks={snacks} drinks={drinks} desserts={desserts} state={props} onChangeProduct={props.onChangeProduct}/>
             </ProductsList>
+
+            
         </Mainside>
     )
 }
@@ -104,3 +106,4 @@ const List = styled.li`
 const ProductsList = styled.div`
     padding: 0 25px;
 `;
+
